@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5413229435282994244
+--- !u!1 &8920761901175576105
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7916400397057068712}
-  - component: {fileID: 7551268086987521560}
+  - component: {fileID: 2215486634758142923}
+  - component: {fileID: 3566690761128247169}
   m_Layer: 0
-  m_Name: line
+  m_Name: sinWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7916400397057068712
+--- !u!4 &2215486634758142923
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5413229435282994244}
+  m_GameObject: {fileID: 8920761901175576105}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,22 +32,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7551268086987521560
+--- !u!114 &3566690761128247169
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5413229435282994244}
+  m_GameObject: {fileID: 8920761901175576105}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3bf1c14a7564a5499a71c57bc75634e, type: 3}
+  m_Script: {fileID: 11500000, guid: fc049b4819cb2f248aa8f81d88d2bbc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   brickPrefab: {fileID: 3998198909799658653, guid: 95a7b078eeb02cb4faaf9aeef1e6b00b, type: 3}
-  brickSize: 0.1
-  start: {x: 0, y: 0, z: 0}
-  end: {x: 5, y: 0, z: 5}
-  extroRotaionAfterSpawn: 0
-  ignorePart: {x: 0, y: 0}
-  drawLine: 1
+  brickSize: 1
+  amplitude: 2
+  wavelength: 5
+  length: 10
+  brickCount: 100
+  extroRotationAfterSpawn: 10
+  ignorePartList:
+  - {x: 10, y: 15}
+  - {x: 20, y: 30}
+  - {x: 50, y: 60}

@@ -1026,7 +1026,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 4110a405aff3aea4a9ec4193b768aed7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1135,8 +1135,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.1, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1152,7 +1152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250ff91713293984cb9f21891ee5ef91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initSpeed: {x: 1, y: 50}
+  initSpeed: {x: 0, y: 20}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

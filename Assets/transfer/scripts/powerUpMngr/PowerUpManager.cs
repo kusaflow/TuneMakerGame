@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUpManager : MonoBehaviour
 {
-    private Queue<PowerUp> powerUpQueue = new Queue<PowerUp>();
+    private Stack<PowerUp> powerUpStack = new Stack<PowerUp>();
     private float powerUpDelay = 3.0f; // Delay before a power-up is added to the stack
 
     public static PowerUpManager Instance { get; private set; }
@@ -19,42 +19,60 @@ public class PowerUpManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+ 
     }
 
     public void CollectPowerUp(PowerUp powerUp)
     {
-        StartCoroutine(AddPowerUpToQueueAfterDelay(powerUp));
+        StartCoroutine(AddPowerUpToStackAfterDelay(powerUp));
     }
 
-    private IEnumerator AddPowerUpToQueueAfterDelay(PowerUp powerUp)
+    public void CollectPowerUp_instantly(PowerUp powerUp)
+    {
+        powerUpStack.Push(powerUp);
+    }
+
+    private IEnumerator AddPowerUpToStackAfterDelay(PowerUp powerUp)
     {
         yield return new WaitForSeconds(powerUpDelay);
-        powerUpQueue.Enqueue(powerUp);
+        powerUpStack.Push(powerUp);
     }
 
     public void UsePowerUp()
     {
-        if (powerUpQueue.Count > 0)
+        if (powerUpStack.Count > 0)
         {
-            PowerUp powerUp = powerUpQueue.Dequeue();
+            PowerUp powerUp = powerUpStack.Pop();
             powerUp.ApplyEffect();
         }
     }
 
     public void ReverseStack()
     {
-        powerUpQueue = new Queue<PowerUp>(new Stack<PowerUp>(powerUpQueue));
+        //reverse the stack
+        Stack<PowerUp> tempStack = new Stack<PowerUp>();
+        while (powerUpStack.Count > 0)
+        {
+            tempStack.Push(powerUpStack.Pop());
+        }
+        powerUpStack = tempStack;
+
     }
 
     public void RandomizeStack()
     {
-        List<PowerUp> powerUps = new List<PowerUp>(powerUpQueue);
-        powerUpQueue.Clear();
+        List<PowerUp> powerUps = new List<PowerUp>(powerUpStack);
+        powerUpStack.Clear();
         while (powerUps.Count > 0)
         {
             int randomIndex = Random.Range(0, powerUps.Count);
-            powerUpQueue.Enqueue(powerUps[randomIndex]);
+            powerUpStack.Push(powerUps[randomIndex]);
             powerUps.RemoveAt(randomIndex);
         }
+    }
+
+    public Stack<PowerUp> GetPowerUpStack()
+    {
+        return powerUpStack;
     }
 }

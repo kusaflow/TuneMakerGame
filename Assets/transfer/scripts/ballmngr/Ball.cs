@@ -14,10 +14,10 @@ public class Ball : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Brick"))
+        /*if (collision.gameObject.CompareTag("Brick"))
         {
             //collision.gameObject.GetComponent<Brick>().Break();
-        }
+        }*/
     }
 
     public void SetVelocity(Vector2 velocity)
@@ -32,7 +32,7 @@ public class Ball : MonoBehaviour
 
     public void DecreaseSize(float multiplier)
     {
-        transform.localScale /= multiplier;
+        transform.localScale *= multiplier;
     }
 
     public void IncreaseSpeed(float multiplier)
@@ -42,7 +42,7 @@ public class Ball : MonoBehaviour
 
     public void DecreaseSpeed(float multiplier)
     {
-        rb.velocity /= multiplier;
+        rb.velocity *= multiplier;
     }
 
     public void MakeInvincible(float duration)
@@ -52,9 +52,12 @@ public class Ball : MonoBehaviour
 
     private IEnumerator InvincibilityCoroutine(float duration)
     {
+        //TODO
+        Debug.Log("Invincible");
         // Implement invincibility logic (e.g., disable collisions)
         yield return new WaitForSeconds(duration);
         // Revert invincibility logic
+        Debug.Log("Not Invincible");
     }
 
     void OnDestroy()

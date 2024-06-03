@@ -1,9 +1,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour
+public class PowerUp 
 {
-    public enum PowerUpType { AddBall, DoubleBalls, HalfBalls, DirectionalControl, Explosive, IncreaseSize, DecreaseSize, InvincibleBall, IncreaseSpeed, DecreaseSpeed, ReverseStack, RandomizeStack, PowerUpCooldown, BlockRegeneration, Blindfold, StickyBalls }
+    public enum PowerUpType { 
+        ///helper enum for powerup types
+        AddBall, DoubleBalls, DirectionalControl, Explosive, 
+        IncreaseSize, InvincibleBall, IncreaseSpeed, Shield, 
+        slowMotion, magnet, tripleScrore, DoubleScore, 
+        ExtraBounce, SplitBallOnCollision, extraTime,
+    
+        //Adverse Powers
+        DecreaseSize, DecreaseSpeed, HalfBalls,
+        RandomDirection, InvisibleBall, DoubleGravity,
+        ReverseStack, RandomizeStack, PowerUpCooldown,
+        BlockRegeneration, Blindfold, StickyBalls
+    }
+
+
+    //contructor
+    public PowerUp(PowerUpType powerUpType)
+    {
+        this.powerUpType = powerUpType;
+    }
+
     public PowerUpType powerUpType;
     public float effectDuration = 5.0f;
 
@@ -21,9 +41,11 @@ public class PowerUp : MonoBehaviour
                 RemoveHalfBalls();
                 break;
             case PowerUpType.DirectionalControl:
+                Debug.Log("TODO : Direction control");
                 // Implement directional control
                 break;
             case PowerUpType.Explosive:
+                Debug.Log("TODO : Explosive");
                 // Implement explosive effect
                 break;
             case PowerUpType.IncreaseSize:
@@ -39,7 +61,7 @@ public class PowerUp : MonoBehaviour
                 BallManager.Instance.ApplyToAllBalls(ball => ball.GetComponent<Ball>().IncreaseSpeed(1.5f));
                 break;
             case PowerUpType.DecreaseSpeed:
-                BallManager.Instance.ApplyToAllBalls(ball => ball.GetComponent<Ball>().DecreaseSpeed(0.5f));
+                BallManager.Instance.ApplyToAllBalls(ball => ball.GetComponent<Ball>().DecreaseSpeed(.5f));
                 break;
             case PowerUpType.ReverseStack:
                 PowerUpManager.Instance.ReverseStack();
@@ -67,7 +89,7 @@ public class PowerUp : MonoBehaviour
         List<GameObject> balls = BallManager.Instance.GetActiveBalls();
         foreach (GameObject ball in balls)
         {
-            BallManager.Instance.SpawnBall(ball.transform.position, ball.GetComponent<Rigidbody2D>().velocity);
+            BallManager.Instance.SpawnBall(ball.transform.position, ball.GetComponent<Rigidbody2D>().velocity*-1);
         }
     }
 

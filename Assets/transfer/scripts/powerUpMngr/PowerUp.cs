@@ -5,19 +5,19 @@ public class PowerUp
 {
     public enum PowerUpType { 
         ///helper enum for powerup types
-        AddBall, DoubleBalls, DirectionalControl, Explosive, 
+        AddBall=0, DoubleBalls, DirectionalControl, Explosive, 
         IncreaseSize, InvincibleBall, IncreaseSpeed, Shield, 
         slowMotion, magnet, tripleScrore, DoubleScore, 
         ExtraBounce, SplitBallOnCollision, extraTime,
     
         //Adverse Powers
         DecreaseSize, DecreaseSpeed, HalfBalls,
-        RandomDirection, InvisibleBall, DoubleGravity,
-        ReverseStack, RandomizeStack, PowerUpCooldown,
-        BlockRegeneration, Blindfold, StickyBalls
+        RandomDirection, DoubleGravity,ReverseStack, 
+        RandomizeStack, BlockRegeneration, popTop2Powers, 
+        popTop4Powers
     }
 
-
+    
     //contructor
     public PowerUp(PowerUpType powerUpType)
     {
@@ -69,18 +69,10 @@ public class PowerUp
             case PowerUpType.RandomizeStack:
                 PowerUpManager.Instance.RandomizeStack();
                 break;
-            case PowerUpType.PowerUpCooldown:
-                // Implement power-up cooldown effect
-                break;
             case PowerUpType.BlockRegeneration:
                 // Implement block regeneration effect
                 break;
-            case PowerUpType.Blindfold:
-                // Implement blindfold effect
-                break;
-            case PowerUpType.StickyBalls:
-                // Implement sticky balls effect
-                break;
+            
         }
     }
 
@@ -100,5 +92,14 @@ public class PowerUp
         {
             BallManager.Instance.RemoveBall(balls[i]);
         }
+    }
+
+    //get the hint for the powerup
+    public string GetHint(PowerUpType power)
+    {
+        string retStr;
+        globalStatic.powerUpHints.TryGetValue(power, out retStr);
+
+        return retStr;
     }
 }

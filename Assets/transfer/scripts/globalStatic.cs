@@ -39,4 +39,6 @@ public class globalStatic
         { PowerUpType.popTop2Powers, "Top two? Popped! Plan accordingly." },
     };
 
+
+    public static bool DisablePopBtn = false;
 }

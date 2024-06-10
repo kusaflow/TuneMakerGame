@@ -7,6 +7,11 @@ public class PowerUpManager : MonoBehaviour
     private Stack<PowerUp> powerUpStack = new Stack<PowerUp>();
     private float powerUpDelay = 3.0f; // Delay before a power-up is added to the stack
 
+    public directionalControl_solo directionalControlPrefab;
+    public ExplosionMngr explosionPrefab;
+    public slowMotionMngr slowMotionPrefab;
+    public PopMngr popMngrPrefab;
+
     public static PowerUpManager Instance { get; private set; }
 
     void Awake()
@@ -47,6 +52,14 @@ public class PowerUpManager : MonoBehaviour
         }
     }
 
+    public void PopPowerUp()
+    {
+        if (powerUpStack.Count > 0)
+        {
+            powerUpStack.Pop();
+        }
+    }
+
     public void ReverseStack()
     {
         //reverse the stack
@@ -75,4 +88,32 @@ public class PowerUpManager : MonoBehaviour
     {
         return powerUpStack;
     }
+
+    //Spawn Directional Gameobject
+    public void SpawnDirectionalControl()
+    {
+        Instantiate(directionalControlPrefab);
+    }
+
+    //explotion effect
+    public void SpawnExplosion()
+    {
+        Instantiate(explosionPrefab);
+    }
+
+    //slow motion effect
+    public void SpawnSlowMotion()
+    {
+        Instantiate(slowMotionPrefab);
+    }
+
+
+    //pop out powers
+    public void PopPowers(int popCount)
+    {
+        PopMngr popMngr = Instantiate(popMngrPrefab);
+        popMngr.popCount = popCount;
+    }
+
+
 }

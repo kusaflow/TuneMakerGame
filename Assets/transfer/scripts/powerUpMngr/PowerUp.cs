@@ -1,7 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp 
+public class PowerUp
 {
     public enum PowerUpType { 
         ///helper enum for powerup types
@@ -32,36 +33,103 @@ public class PowerUp
         switch (powerUpType)
         {
             case PowerUpType.AddBall:
-                BallManager.Instance.SpawnBall(new Vector3(0, 0, 0), new Vector2(1, 1));
+                BallManager.Instance.SpawnBall_random();
                 break;
             case PowerUpType.DoubleBalls:
                 DuplicateBalls();
                 break;
-            case PowerUpType.HalfBalls:
-                RemoveHalfBalls();
-                break;
             case PowerUpType.DirectionalControl:
-                Debug.Log("TODO : Direction control");
-                // Implement directional control
+                PowerUpManager.Instance.SpawnDirectionalControl();
                 break;
             case PowerUpType.Explosive:
-                Debug.Log("TODO : Explosive");
-                // Implement explosive effect
+                PowerUpManager.Instance.SpawnExplosion();
                 break;
             case PowerUpType.IncreaseSize:
                 BallManager.Instance.ApplyToAllBalls(ball => ball.GetComponent<Ball>().IncreaseSize(1.5f));
                 break;
-            case PowerUpType.DecreaseSize:
-                BallManager.Instance.ApplyToAllBalls(ball => ball.GetComponent<Ball>().DecreaseSize(0.5f));
-                break;
             case PowerUpType.InvincibleBall:
+                //TODO
+                //
+                //
+                //
+                //TODO
                 BallManager.Instance.ApplyToAllBalls(ball => ball.GetComponent<Ball>().MakeInvincible(effectDuration));
                 break;
             case PowerUpType.IncreaseSpeed:
                 BallManager.Instance.ApplyToAllBalls(ball => ball.GetComponent<Ball>().IncreaseSpeed(1.5f));
                 break;
+            case PowerUpType.Shield:
+                //TODO
+                //
+                //
+                //
+                //TODO
+                break;
+            case PowerUpType.slowMotion:
+                PowerUpManager.Instance.SpawnSlowMotion();
+                break;
+            case PowerUpType.magnet:
+                    //TODO
+                    //
+                    //
+                    //
+                    //TODO
+                    break;
+            case PowerUpType.tripleScrore:
+                //TODO
+                //
+                //
+                //
+                //TODO
+                break;
+            case PowerUpType.DoubleScore:
+                //TODO
+                //
+                //
+                //
+                //TODO
+                break;
+            case PowerUpType.ExtraBounce:
+                //TODO
+                //
+                //
+                //
+                //TODO
+                break;
+            case PowerUpType.SplitBallOnCollision:
+                //TODO
+                //
+                //
+                //
+                //TODO
+                break;
+            case PowerUpType.extraTime:
+                //TODO
+                //
+                //
+                //
+                //TODO
+                break;
+
+            case PowerUpType.DecreaseSize:
+                BallManager.Instance.ApplyToAllBalls(ball => ball.GetComponent<Ball>().DecreaseSize(0.5f));
+                break;
             case PowerUpType.DecreaseSpeed:
                 BallManager.Instance.ApplyToAllBalls(ball => ball.GetComponent<Ball>().DecreaseSpeed(.5f));
+                break;
+            case PowerUpType.HalfBalls:
+                RemoveHalfBalls();
+                break;
+            case PowerUpType.RandomDirection:
+                BallManager.Instance.setRandomDirectionWithSameSpeed();
+                break;
+            case PowerUpType.DoubleGravity:
+                // Implement double gravity effect
+                //TODO
+                //
+                //
+                //
+                //TODO
                 break;
             case PowerUpType.ReverseStack:
                 PowerUpManager.Instance.ReverseStack();
@@ -71,6 +139,17 @@ public class PowerUp
                 break;
             case PowerUpType.BlockRegeneration:
                 // Implement block regeneration effect
+                //TODO
+                //
+                //
+                //
+                //TODO
+                break;
+            case PowerUpType.popTop2Powers:
+                PowerUpManager.Instance.PopPowers(2);
+                break;
+            case PowerUpType.popTop4Powers:
+                PowerUpManager.Instance.PopPowers(4);
                 break;
             
         }
@@ -101,5 +180,9 @@ public class PowerUp
         globalStatic.powerUpHints.TryGetValue(power, out retStr);
 
         return retStr;
-    }
+    } 
+
+    //directional control
+
+    
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class MakeCircle : MonoBehaviour
 {
     public GameObject brickPrefab; // Prefab of the brick
+
     public float brickSize = 1.0f; // Size of each brick
 
     public int brickCount = 100; // Number of bricks in the circle
@@ -47,6 +48,8 @@ public class MakeCircle : MonoBehaviour
                 continue;
 
             Vector3 position = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius + center;
+
+            brickPrefab = GetComponent<BrickProvider>().provideBlockToDraw();
             GameObject brick = Instantiate(brickPrefab, position, Quaternion.identity, transform);
 
             // Rotate the brick to face the center

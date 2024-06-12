@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 438610593299952422}
   - component: {fileID: 4184946133663149190}
+  - component: {fileID: 3485488564028449327}
   m_Layer: 0
   m_Name: circle
   m_TagString: Untagged
@@ -52,3 +53,18 @@ MonoBehaviour:
   - {x: 20, y: 90}
   - {x: 180, y: 200}
   - {x: 250, y: 300}
+  extroRotaionAfterSpawn: 0
+--- !u!114 &3485488564028449327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639050783559622654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11adabe0501b84b4d843fe64ffb8b952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brickPrefab: {fileID: 3998198909799658653, guid: a54564fa2d0133341bcd640b88e47af3, type: 3}
+  Spike: {fileID: 353262773675475, guid: 5c0fdd04e34993b4f8ba0701357ef2b3, type: 3}

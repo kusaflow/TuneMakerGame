@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: -1433734139161979379}
   - component: {fileID: 1077063266073324545}
   - component: {fileID: 515824445070819782}
-  - component: {fileID: 7448238026775674298}
+  - component: {fileID: -8637121530024872345}
   m_Layer: 0
-  m_Name: breakableBrick
+  m_Name: 03_breakableBrick
   m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5264151, g: 1, b: 0.8093338, a: 1}
+  m_Color: {r: 0.13351846, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bac0eec7d3f99d47bedf8b1840df99b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &7448238026775674298
+--- !u!82 &-8637121530024872345
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,7 +169,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 43b5d12350790d04ba46f58c01f0e5b5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 476551e873851154e9406b58b0c833b4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

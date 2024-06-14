@@ -19,14 +19,16 @@ public class PowerUp
     }
 
     
+    
+    public PowerUpType powerUpType;
+    public float effectDuration = 5.0f;
+
+
     //contructor
     public PowerUp(PowerUpType powerUpType)
     {
         this.powerUpType = powerUpType;
     }
-
-    public PowerUpType powerUpType;
-    public float effectDuration = 5.0f;
 
     public void ApplyEffect()
     {

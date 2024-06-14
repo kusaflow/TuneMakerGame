@@ -15,6 +15,9 @@ public class UI_addTestPowerup : MonoBehaviour
 
     public PP_StackData stackData;
 
+    [Space]
+    public Button addPowerup_toLevel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +46,15 @@ public class UI_addTestPowerup : MonoBehaviour
                     globalStatic.updateTheStackPlease = true;
                 }
          );
+
+        addPowerup_toLevel.onClick.AddListener(() =>
+            {
+                SpawnPowerUp2Level.Instance.SpawnPowerup(new Vector2(Random.Range(-12.15f, 17.4f), Random.Range(-22.22f, 35.8f)), (PowerUp.PowerUpType)dropDown.value);
+                //PowerUpManager.Instance.CollectPowerUp_instantly(new PowerUp((PowerUp.PowerUpType)dropDown.value));
+                globalStatic.updateTheStackPlease = true;
+            }
+        );
+
 
 
     }

@@ -271,6 +271,7 @@ public class DrawAlphabet : MonoBehaviour
         {
             Vector3 position = Vector3.Lerp(start, end, i / (float)brickCount);
             Quaternion rotation = Quaternion.LookRotation(Vector3.forward, end - start);
+            brickPrefab = GetComponent<BrickProvider>().provideBlockToDraw();
             Instantiate(brickPrefab, position, rotation, transform);
         }
     }

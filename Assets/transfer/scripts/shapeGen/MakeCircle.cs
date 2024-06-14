@@ -17,6 +17,12 @@ public class MakeCircle : MonoBehaviour
 
     void OnEnable()
     {
+        //(); // Example: Generate a circle at the origin
+        //transform.transform.Rotate(0, 0, extroRotaionAfterSpawn);
+    }
+
+    private void Start()
+    {
         GenerateCircle(); // Example: Generate a circle at the origin
         transform.transform.Rotate(0, 0, extroRotaionAfterSpawn);
     }

@@ -5,38 +5,36 @@ using UnityEngine;
 public class BrickProvider : MonoBehaviour
 {
 
-    public GameObject brickPrefab; // Prefab of the brick
-    public GameObject Spike;
-
     int IdxChoosenForBrick = 0;
 
-    ManageLevelBehaviour manageLevelBehaviour;
-
-    private void Start()
-    {
-        manageLevelBehaviour = FindAnyObjectByType<ManageLevelBehaviour>();
-    }
 
     public GameObject provideBlockToDraw ()
     {
 
-        if (!manageLevelBehaviour)
-            manageLevelBehaviour = FindAnyObjectByType<ManageLevelBehaviour> ();
         float rand = Random.Range(0, 100);
 
-        if (rand < manageLevelBehaviour.SpikeRateOutOf100)
-            return Spike;
+        if (rand < ManageLevelBehaviour.Instance.SpikeRateOutOf100)
+        {
+            GameObject retGame_spike = ManageLevelBehaviour.Instance.SpikeBlock;
 
-        return brickPrefab;
+            retGame_spike.GetComponentInChildren<AudioSource>().clip = ManageLevelBehaviour.Instance.Spike;
+            retGame_spike.GetComponentInChildren<AudioSource>().playOnAwake = false;
+
+            return retGame_spike;
+
+        }
+
+        int rand_i = (int)Random.Range(0, ManageLevelBehaviour.Instance.BlockColor.Count);
+
+        GameObject retGame = ManageLevelBehaviour.Instance.BaseLevelBlock;
+
+        retGame.GetComponent<SpriteRenderer>().color = ManageLevelBehaviour.Instance.BlockColor[rand_i];
+        retGame.GetComponent<AudioSource>().clip = ManageLevelBehaviour.Instance.BaseBlockAudio;
+        retGame.GetComponent<AudioSource>().playOnAwake = false;
+
+        return retGame;
 
     }
 
-    //setColor and AudioSource
-
-    public void AddNessPart (GameObject go)
-    {
-        AudioSource Ads = go.AddComponent<AudioSource>();
-        Ads.clip = manageLevelBehaviour.BlockAudioClips[IdxChoosenForBrick];
-
-    }
+    
 }

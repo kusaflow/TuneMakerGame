@@ -13,6 +13,10 @@ public class Spike : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
+
+            if (AudioStackMngr.Instance.stack.Count <= 2)
+                AudioStackMngr.Instance.stack.Enqueue(GetComponent<AudioSource>().clip);
+
             float ballSize = collision.gameObject.transform.localScale.x/.8f;
             int damage = Mathf.RoundToInt(damagePerHit * ballSize * sizeMultiplier);
 
@@ -26,6 +30,7 @@ public class Spike : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+
 
             Destroy(collision.gameObject);
         }

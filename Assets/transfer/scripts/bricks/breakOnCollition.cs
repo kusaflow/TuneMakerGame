@@ -12,6 +12,9 @@ public class breakOnCollition : MonoBehaviour
         if (AudioStackMngr.Instance.stack.Count <= 2)
             AudioStackMngr.Instance.stack.Enqueue(GetComponent<AudioSource>().clip);
 
+        BlockManager.Instance.SaveBlock(this.gameObject);
+        ScoreManager.Instance.AddScore(ScoreManager.Instance.scorePerBlock);
+
         Destroy(gameObject);
     }
 }

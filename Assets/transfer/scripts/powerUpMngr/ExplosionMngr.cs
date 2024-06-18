@@ -43,6 +43,7 @@ public class ExplosionMngr : MonoBehaviour
             // Check if the object is a block or a ball
             if (obj.CompareTag("Block") || obj.CompareTag("Ball") || obj.CompareTag("Brick"))
             {
+                ScoreManager.Instance.AddScore(ScoreManager.Instance.scorePerBlock);
                 Destroy(obj.gameObject);
             }
         }

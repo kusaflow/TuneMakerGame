@@ -24,6 +24,7 @@ public class testPoerupAdd : MonoBehaviour
         PowerUpManager.Instance.CollectPowerUp_instantly(new PowerUp(PowerUp.PowerUpType.AddBall));
         PowerUpManager.Instance.CollectPowerUp_instantly(new PowerUp(PowerUp.PowerUpType.DoubleBalls));
         PowerUpManager.Instance.CollectPowerUp_instantly(new PowerUp(PowerUp.PowerUpType.DoubleBalls));
+        PowerUpManager.Instance.CollectPowerUp_instantly(new PowerUp(PowerUp.PowerUpType.BlockRegeneration));
 
         //spawn 2 balls 
         BallManager.Instance.SpawnBall(new Vector3(0, 0, 0), new Vector2(40, 40));

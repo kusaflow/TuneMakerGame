@@ -5,7 +5,7 @@ using UnityEngine;
 public class BrickProvider : MonoBehaviour
 {
 
-    int IdxChoosenForBrick = 0;
+    //int IdxChoosenForBrick = 0;
 
 
     public GameObject provideBlockToDraw ()

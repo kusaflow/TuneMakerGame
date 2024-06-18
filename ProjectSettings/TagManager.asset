@@ -15,10 +15,10 @@ TagManager:
   - Water
   - UI
   - neon_PP
-  - 
-  - 
-  - 
-  - 
+  - ball
+  - wall
+  - DestructibleObjects
+  - InvincibleBall
   - 
   - 
   - 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1077063266073324545}
   - component: {fileID: 515824445070819782}
   - component: {fileID: 7448238026775674298}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: breakableBrick
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5264151, g: 1, b: 0.8093338, a: 1}
+  m_Color: {r: 0.88227105, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

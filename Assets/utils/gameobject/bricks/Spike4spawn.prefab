@@ -108,6 +108,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: spike
       objectReference: {fileID: 0}
+    - target: {fileID: 3284541707367325968, guid: f23f47f8bec56894294a5ff2ab87c15b, type: 3}
+      propertyPath: m_TagString
+      value: Brick
+      objectReference: {fileID: 0}
     - target: {fileID: 7675724303406471159, guid: f23f47f8bec56894294a5ff2ab87c15b, type: 3}
       propertyPath: m_Color.b
       value: 0.25490198

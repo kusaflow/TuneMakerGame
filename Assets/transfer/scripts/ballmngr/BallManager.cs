@@ -12,6 +12,9 @@ public class BallManager : MonoBehaviour
 
     public int BallLimitInTheScene = 500;
 
+    public Sprite InvinsibleBallTex;
+    public Sprite currentBallTexture;
+
     public static BallManager Instance { get; private set; }
 
     void Awake()
@@ -125,6 +128,18 @@ public class BallManager : MonoBehaviour
             rb.velocity = direction * speed;
 
         }
+
+    }
+
+    public void InvinsibleBallPower ()
+    {
+        GameObject b = activeBalls[Random.Range(0, activeBalls.Count)];
+
+        SpriteRenderer sr = b.GetComponent<SpriteRenderer>();
+        currentBallTexture = sr.sprite;
+        sr.sprite = InvinsibleBallTex;
+
+
 
     }
 

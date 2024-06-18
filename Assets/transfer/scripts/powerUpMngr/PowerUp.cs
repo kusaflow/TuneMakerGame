@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PowerUp
 {
+    //magnet is regen block and make them spike
+
     public enum PowerUpType { 
         ///helper enum for powerup types
         AddBall=0, DoubleBalls, DirectionalControl, Explosive, 
@@ -15,13 +17,16 @@ public class PowerUp
         DecreaseSize, DecreaseSpeed, HalfBalls,
         RandomDirection, DoubleGravity,ReverseStack, 
         RandomizeStack, BlockRegeneration, popTop2Powers, 
-        popTop4Powers
+        popTop4Powers,
+
+
+        EOL
     }
 
     
     
     public PowerUpType powerUpType;
-    public float effectDuration = 5.0f;
+    public float effectDuration = 10.0f;
 
 
     //contructor
@@ -50,33 +55,21 @@ public class PowerUp
                 BallManager.Instance.ApplyToAllBalls(ball => ball.GetComponent<Ball>().IncreaseSize(1.5f));
                 break;
             case PowerUpType.InvincibleBall:
-                //TODO
-                //
-                //
-                //
-                //TODO
                 BallManager.Instance.ApplyToAllBalls(ball => ball.GetComponent<Ball>().MakeInvincible(effectDuration));
                 break;
             case PowerUpType.IncreaseSpeed:
                 BallManager.Instance.ApplyToAllBalls(ball => ball.GetComponent<Ball>().IncreaseSpeed(1.5f));
                 break;
             case PowerUpType.Shield:
-                //TODO
-                //
-                //
-                //
-                //TODO
+                BallManager.Instance.ApplyToAllBalls(ball => ball.GetComponent<Ball>().MakeShieldPowerup(effectDuration));
                 break;
             case PowerUpType.slowMotion:
                 PowerUpManager.Instance.SpawnSlowMotion();
                 break;
             case PowerUpType.magnet:
-                    //TODO
-                    //
-                    //
-                    //
-                    //TODO
-                    break;
+
+                BlockManager.Instance.RegenerateButSpike();
+                break;
             case PowerUpType.tripleScrore:
                 //TODO
                 //
@@ -126,12 +119,7 @@ public class PowerUp
                 BallManager.Instance.setRandomDirectionWithSameSpeed();
                 break;
             case PowerUpType.DoubleGravity:
-                // Implement double gravity effect
-                //TODO
-                //
-                //
-                //
-                //TODO
+                BallManager.Instance.ApplyToAllBalls(ball => ball.GetComponent<Ball>().Add_doubleGravityPower(effectDuration));
                 break;
             case PowerUpType.ReverseStack:
                 PowerUpManager.Instance.ReverseStack();
@@ -140,12 +128,7 @@ public class PowerUp
                 PowerUpManager.Instance.RandomizeStack();
                 break;
             case PowerUpType.BlockRegeneration:
-                // Implement block regeneration effect
-                //TODO
-                //
-                //
-                //
-                //TODO
+                BlockManager.Instance.RegenerateBlocks();
                 break;
             case PowerUpType.popTop2Powers:
                 PowerUpManager.Instance.PopPowers(2);

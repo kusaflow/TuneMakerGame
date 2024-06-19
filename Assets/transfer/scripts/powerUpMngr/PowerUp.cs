@@ -71,32 +71,16 @@ public class PowerUp
                 BlockManager.Instance.RegenerateButSpike();
                 break;
             case PowerUpType.tripleScrore:
-                //TODO
-                //
-                //
-                //
-                //TODO
+                ScoreManager.Instance.setScoreMul(3);
                 break;
             case PowerUpType.DoubleScore:
-                //TODO
-                //
-                //
-                //
-                //TODO
+                ScoreManager.Instance.setScoreMul(2);
                 break;
             case PowerUpType.ExtraBounce:
-                //TODO
-                //
-                //
-                //
-                //TODO
+                PowerUpManager.Instance.Dec_bounciness();
                 break;
             case PowerUpType.SplitBallOnCollision:
-                //TODO
-                //
-                //
-                //
-                //TODO
+                //BallManager.Instance.ApplyToAllBalls(ball => ball.GetComponent<Ball>().isSplitModeOn());
                 break;
             case PowerUpType.extraTime:
                 //TODO

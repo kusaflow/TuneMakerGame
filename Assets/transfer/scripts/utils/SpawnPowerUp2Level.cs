@@ -57,7 +57,13 @@ public class SpawnPowerUp2Level : MonoBehaviour
     IEnumerator SpawnPowerupAfterSomeTime()
     {
         yield return new WaitForSeconds(WaitTimeForPower);
-        int powerType = Random.Range(0, (int)PowerUp.PowerUpType.EOL);
+        int powerType;
+        do
+        {
+            powerType = Random.Range(0, (int)PowerUp.PowerUpType.EOL);
+        } while ((PowerUp.PowerUpType)powerType == PowerUp.PowerUpType.SplitBallOnCollision
+                    || (PowerUp.PowerUpType)powerType == PowerUp.PowerUpType.extraTime);
+
         SpawnPowerUp2Level.Instance.SpawnPowerup(new Vector2(Random.Range(-12.15f, 17.4f), Random.Range(-22.22f, 35.8f)), (PowerUp.PowerUpType)powerType);
         //PowerUpManager.Instance.CollectPowerUp_instantly(new PowerUp((PowerUp.PowerUpType)dropDown.value));
         globalStatic.updateTheStackPlease = true;

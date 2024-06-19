@@ -12,6 +12,9 @@ public class PowerUpManager : MonoBehaviour
     public slowMotionMngr slowMotionPrefab;
     public PopMngr popMngrPrefab;
 
+    public PhysicsMaterial2D bouncyMaterial; // Reference to the bouncy physics material
+
+
     public static PowerUpManager Instance { get; private set; }
 
     void Awake()
@@ -115,5 +118,19 @@ public class PowerUpManager : MonoBehaviour
         popMngr.popCount = popCount;
     }
 
+    public void Dec_bounciness()
+    {
+        StartCoroutine(makeLessBounce());
+    }
+
+
+    // extrabounce
+    private IEnumerator makeLessBounce()
+    {
+
+        bouncyMaterial.bounciness = .2f;
+        yield return new WaitForSeconds(10);
+        bouncyMaterial.bounciness = 1f;
+    }
 
 }

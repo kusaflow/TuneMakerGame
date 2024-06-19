@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallManager : MonoBehaviour
 {
     public GameObject ballPrefab; // Prefab of the ball
-    private List<GameObject> activeBalls = new List<GameObject>();
+    public List<GameObject> activeBalls = new List<GameObject>();
     private List<float> preservedSpeed = new List<float>();
 
     public int ballCount { get { return activeBalls.Count; } }
@@ -56,6 +56,11 @@ public class BallManager : MonoBehaviour
         Rigidbody2D rb = newBall.GetComponent<Rigidbody2D>();
 
         rb.velocity = initialVelocity;
+        activeBalls.Add(newBall);
+    }
+
+    public void AddTheBall(GameObject newBall)
+    {
         activeBalls.Add(newBall);
     }
 

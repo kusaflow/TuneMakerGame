@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,11 +12,13 @@ public class ScoreManager : MonoBehaviour
     public double milestone = 100; // Score milestone to spawn a power-up
     public float milestoneDificulty = 1.2f; 
 
+    public Slider milestoneSlider;
 
-    private double score = 0;
-    private double nextMilestone;
 
-    private float scoreMultiplier = 1.0f; // Default multiplier
+    public double score = 0;
+    public double nextMilestone;
+
+    public float scoreMultiplier = 1.0f; // Default multiplier
 
     void Awake()
     {
@@ -33,6 +36,7 @@ public class ScoreManager : MonoBehaviour
     {
         nextMilestone = milestone;
         UpdateScoreUI();
+        milestoneSlider.maxValue = (long)milestone;
     }
 
     public void AddScore(int points)
@@ -65,11 +69,38 @@ public class ScoreManager : MonoBehaviour
         if (scoreText != null)
         {
             scoreText.text = score.ToString();
+
+            if (milestoneSlider)
+            {
+                milestoneSlider.value = (long)score;
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (milestoneSlider)
+        {
+            milestoneSlider.maxValue = (long)Mathf.Lerp(milestoneSlider.maxValue, (float)nextMilestone, .05f);
         }
     }
 
     private void SpawnPowerUp()
     {
         SpawnPowerUp2Level.Instance.SpawnRandomPower();
+    }
+
+    public void setScoreMul(int v)
+    {
+        StartCoroutine(tempScoremul(v));
+        
+    }
+
+    IEnumerator tempScoremul(int mul)
+    {
+        scoreMultiplier = mul;
+        yield return new WaitForSeconds(7.0f);
+        scoreMultiplier = 1.0f;
+        
     }
 }

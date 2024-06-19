@@ -15,6 +15,11 @@ public class Ball : MonoBehaviour
     public GameObject Shield_GO;
     public float affected_gravityScale = 2;
 
+    [Space]
+    public float minScale = 0.2f; // Minimum scale before the ball is destroyed
+    public bool isSplitOn = false;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -22,6 +27,17 @@ public class Ball : MonoBehaviour
 
         InvincibleGO.SetActive(false);
         Shield_GO.SetActive(false);
+    }
+
+    private void Update()
+    {
+        Vector3 currentScale = transform.localScale;
+        if (currentScale.x < minScale && currentScale.y < minScale)
+        {
+            BallManager.Instance.RemoveBall(gameObject);
+            // Destroy the original ball
+            //Destroy(gameObject);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -35,7 +51,50 @@ public class Ball : MonoBehaviour
                 Destroy(collision.gameObject);
             }
         }
+
+        if (isSplitOn)
+        {
+            Split();
+        }
     }
+
+    ///
+    private void Split()
+    {
+        Vector3 currentScale = transform.localScale;
+
+        if (currentScale.x > minScale && currentScale.y > minScale)
+        {
+            // Calculate new scale
+            Vector3 newScale = currentScale * 0.6f;
+
+            // Create two new balls with half the scale
+            CreateNewBall(newScale);
+            CreateNewBall(newScale);
+
+            BallManager.Instance.RemoveBall(gameObject);
+            // Destroy the original ball
+            //Destroy(gameObject);
+        }
+    }
+
+    private void CreateNewBall(Vector3 newScale)
+    {
+        GameObject newBall = Instantiate(gameObject, transform.position, Quaternion.identity);
+        BallManager.Instance.AddTheBall(newBall);
+
+
+        newBall.transform.localScale = newScale;
+        Rigidbody2D rb = newBall.GetComponent<Rigidbody2D>();
+
+        // Apply some force to the new balls to move them apart
+        if (rb != null)
+        {
+            rb.AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * 5f, ForceMode2D.Impulse);
+        }
+    }
+    ///
+
 
     public void SetVelocity(Vector2 velocity)
     {
@@ -128,6 +187,21 @@ public class Ball : MonoBehaviour
 
     void OnDestroy()
     {
-        ballManager.RemoveBall(gameObject);
+        //if(gameObject)
+           // ballManager.RemoveBall(gameObject);
     }
+
+    public void isSplitModeOn()
+    {
+        StartCoroutine(splitPower());
+    }
+
+    IEnumerator splitPower()
+    {
+        isSplitOn = true;
+        yield return new WaitForSeconds(10);
+        isSplitOn = false;
+
+    }
+
 }
